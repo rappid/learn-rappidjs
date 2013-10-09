@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<form:FormAppClass xmlns="http://www.w3.org/1999/xhtml"
+                   xmlns:js="js.core" xmlns:ui="js.ui" xmlns:form="form">
+    <div class="container">
+
+        <h2>Form Validation</h2>
+        <hr/>
+
+        <div class="alert alert-error" visible="{person.errors().size()}">
+            Please check the red marked fields again!
+        </div>
+
+        <div class="well">
+
+            <form onsubmit="_onSubmit">
+                <fieldset>
+                    <legend>Person</legend>
+                    <div class="row">
+                        <div _error="{person.fieldError('firstName')}"
+                             class="control-group span3 {errorClass(_error)}">
+                            <label class="control-label" for="inputName">Firstname</label>
+                            <div class="controls">
+                                <input type="text" id="inputName" placeholder="Firstname" value="{{person.firstName}}"/>
+                            </div>
+                            <span class="help-inline">{_error.code}</span>
+                        </div>
+
+
+                        <div _error="{person.fieldError('lastName')}" class="control-group span3 {errorClass(_error)}">
+                            <label class="control-label" for="inputLastName">Lastname</label>
+                            <div class="controls">
+                                <input type="text" id="inputLastName" placeholder="LastName"
+                                       value="{{person.lastName}}"/>
+                            </div>
+                            <span class="help-inline">{_error.code}</span>
+                        </div>
+
+                        <div _error="{person.fieldError('email')}" class="control-group span3 {errorClass(_error)}">
+                            <label class="control-label" for="inputEmail">Email</label>
+                            <div class="controls">
+                                <input type="text" id="inputEmail" placeholder="Email" value="{{person.email}}"/>
+                            </div>
+                            <span class="help-inline">{_error.code}</span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Address</legend>
+                    <div class="row">
+
+                        <div _error="{person.address.fieldError('street')}"
+                             class="control-group span3 {errorClass(_error)}">
+                            <label class="control-label" for="inputStreet">Street</label>
+                            <div class="controls">
+                                <input type="text" id="inputStreet" placeholder="Street"
+                                       value="{{person.address.street}}"/>
+                            </div>
+                            <span class="help-inline">{_error.code}</span>
+                        </div>
+                        <div _error="{person.address.fieldError('zipCode')}"
+                             class="control-group span3 {errorClass(_error)}">
+                            <label class="control-label" for="inputZipCode">ZipCode</label>
+                            <div class="controls">
+                                <input type="text" id="inputZipCode" placeholder="ZipCode"
+                                       value="{{person.address.zipCode}}"/>
+                            </div>
+                            <span class="help-inline">{_error.code}</span>
+                        </div>
+                        <div _error="{person.address.fieldError('city')}"
+                             class="control-group span3 {errorClass(_error)}">
+                            <label class="control-label" for="inputCity">City</label>
+                            <div class="controls">
+                                <input type="text" id="inputCity" placeholder="City"
+                                       value="{{person.address.city}}"/>
+                            </div>
+                            <span class="help-inline">{_error.code}</span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-success pull-right">Validate</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+</form:FormAppClass>
