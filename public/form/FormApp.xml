@@ -109,7 +109,10 @@
                 <fieldset>
                     <legend>Address</legend>
                     <div class="row">
-                        <field:Text class="span3" label="Street" value="{{person2.address.street}}"/>
+                        <!--Bind to the value attribute of the field to enable error displaying!-->
+                        <ui:Field value="{person2.address.street}" label="Street" class="span3">
+                            <input type="text" value="{person2.address.street}"/>
+                        </ui:Field>
                         <field:Text class="span3" label="Zipcode" value="{{person2.address.zipCode}}"/>
                         <field:Text class="span3" label="City" value="{{person2.address.city}}"/>
                     </div>
