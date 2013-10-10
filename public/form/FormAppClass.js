@@ -9,12 +9,18 @@ define(
             initialize: function () {
                 this.set('appName', 'FormApp');
                 this.set('person', new Person());
+                this.set('person2', new Person());
             },
 
             _onSubmit: function (e) {
                 e.preventDefault();
                 this.$.person.validate();
 
+            },
+
+            _onSubmit2: function(e){
+                e.preventDefault();
+                this.$.person2.validate();
             },
 
             errorClass: function (error) {

@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <form:FormAppClass xmlns="http://www.w3.org/1999/xhtml"
-                   xmlns:js="js.core" xmlns:ui="js.ui" xmlns:form="form">
+                   xmlns:js="js.core" xmlns:ui="js.ui" xmlns:form="form" xmlns:field="js.ui.field">
     <div class="container">
 
         <h2>Form Validation</h2>
         <hr/>
-
+        <h3>Form validation with plain HTML elements</h3>
+        <br/>
         <div class="alert alert-error" visible="{person.errors().size()}">
             Please check the red marked fields again!
         </div>
@@ -22,7 +23,7 @@
                             <div class="controls">
                                 <input type="text" id="inputName" placeholder="Firstname" value="{{person.firstName}}"/>
                             </div>
-                            <span class="help-inline">{_error.code}</span>
+                            <span class="error">{_error.code}</span>
                         </div>
 
 
@@ -32,7 +33,7 @@
                                 <input type="text" id="inputLastName" placeholder="LastName"
                                        value="{{person.lastName}}"/>
                             </div>
-                            <span class="help-inline">{_error.code}</span>
+                            <span class="error">{_error.code}</span>
                         </div>
 
                         <div _error="{person.fieldError('email')}" class="control-group span3 {errorClass(_error)}">
@@ -40,7 +41,7 @@
                             <div class="controls">
                                 <input type="text" id="inputEmail" placeholder="Email" value="{{person.email}}"/>
                             </div>
-                            <span class="help-inline">{_error.code}</span>
+                            <span class="error">{_error.code}</span>
                         </div>
                     </div>
                 </fieldset>
@@ -55,7 +56,7 @@
                                 <input type="text" id="inputStreet" placeholder="Street"
                                        value="{{person.address.street}}"/>
                             </div>
-                            <span class="help-inline">{_error.code}</span>
+                            <span class="error">{_error.code}</span>
                         </div>
                         <div _error="{person.address.fieldError('zipCode')}"
                              class="control-group span3 {errorClass(_error)}">
@@ -64,7 +65,7 @@
                                 <input type="text" id="inputZipCode" placeholder="ZipCode"
                                        value="{{person.address.zipCode}}"/>
                             </div>
-                            <span class="help-inline">{_error.code}</span>
+                            <span class="error">{_error.code}</span>
                         </div>
                         <div _error="{person.address.fieldError('city')}"
                              class="control-group span3 {errorClass(_error)}">
@@ -73,7 +74,7 @@
                                 <input type="text" id="inputCity" placeholder="City"
                                        value="{{person.address.city}}"/>
                             </div>
-                            <span class="help-inline">{_error.code}</span>
+                            <span class="error">{_error.code}</span>
                         </div>
                     </div>
                 </fieldset>
@@ -85,6 +86,44 @@
                 </div>
 
             </form>
+        </div>
+
+        <hr/>
+
+        <h3>Form validation with the usage of form components</h3>
+        <p>Looks the same but uses components wehere the error displaying is already included. Saves some lines of code :)</p>
+        <br/>
+        <div class="alert alert-error" visible="{person2.errors().size()}">
+            Please check the red marked fields again!
+        </div>
+        <div class="well">
+            <form onsubmit="_onSubmit2">
+                <fieldset>
+                    <legend>Person</legend>
+                    <div class="row">
+                        <field:Text class="span3" label="Firstname" value="{{person2.firstName}}"/>
+                        <field:Text class="span3" label="Lastname" value="{{person2.lastName}}"/>
+                        <field:Text class="span3" label="Email" value="{{person2.email}}"/>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Address</legend>
+                    <div class="row">
+                        <field:Text class="span3" label="Street" value="{{person2.address.street}}"/>
+                        <field:Text class="span3" label="Zipcode" value="{{person2.address.zipCode}}"/>
+                        <field:Text class="span3" label="City" value="{{person2.address.city}}"/>
+                    </div>
+                </fieldset>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-success pull-right">Validate</button>
+                    </div>
+                </div>
+
+            </form>
+
+
         </div>
 
 
