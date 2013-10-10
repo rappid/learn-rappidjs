@@ -91,7 +91,7 @@
         <hr/>
 
         <h3>Form validation with the usage of form components</h3>
-        <p>Looks the same but uses components wehere the error displaying is already included. Saves some lines of code :)</p>
+        <p>Looks the same but uses components where the error displaying is already included. Saves some lines of code :)</p>
         <br/>
         <div class="alert alert-error" visible="{person2.errors().size()}">
             Please check the red marked fields again!
